@@ -27,7 +27,10 @@ def predict_api(config_file, checkpoint_file, input_dir, output_dir, device='cud
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model = init_model( config_file, checkpoint_file, device=device )
     result = inference_model(model, input_dir)
-    result = dict(Nutrient_deficiency = result['pred_class'])
+    if result['pred_class'] == 'healthy':
+        result = dict( Nutritional_Condition = 'Good')
+    else:  
+        result = dict( Deficient_Nutrient = result['pred_class'])
     model.show_result( input_dir, result, out_file=os.path.join(output_dir, os.path.basename(input_dir)))
     return result
 
