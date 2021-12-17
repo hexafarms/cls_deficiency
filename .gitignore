@@ -117,3 +117,6 @@ venv.bak/
 # Pytorch
 *.pth
 
+# Hexafarms
+*.png
+*.JPG
