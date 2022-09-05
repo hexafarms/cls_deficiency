@@ -1,0 +1,1 @@
+python tools/train.py configs/resnet/resnet50_8xb32_Species.py
